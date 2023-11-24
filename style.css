@@ -117,3 +117,6 @@ i {font-size: 16px;}
 }
 
 .social_icons:hover .icon_circle {animation-play-state: paused; cursor: pointer;}
+
+/* featured image */
+.featured-image {}
