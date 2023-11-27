@@ -148,6 +148,11 @@ i {font-size: 16px;}
 .about-info .about-me-btn {text-decoration: none; font-size: 15px; padding: 10px 20px; cursor: pointer; border: none; border-radius: 20px; background: #8749f2; color: #fff; margin-top: 20px; font-weight: 500; transition: all 0.5s ease;}
 
 /* skill */
-.skill {position: relative; min-width: 600px; width: 100%; background: transparent; box-shadow: 1px 8px 10px 2px var(--first-shadow); } 
+.skill {position: relative; min-width: 600px; width: 100%; background: transparent; box-shadow: 1px 8px 10px 2px var(--first-shadow);} 
+.skill .skill-box {width: 100%; margin: 25px 0;}
+.skill-box .title {display: block; font-size: 14px; font-weight: 600; color: var(--text-color);}
+.skill-box .skill-bar {height: 8px; width: 100%; border-radius: 6px; margin-top: 6px; background: rgba(0, 0, 0, 0.1);}
+.skill-box .skill-per {position: relative; display: block; height: 100%;width: 90%;border-radius: 6px; background: #8749f2; animation: progress 0.4s ease-in-out forwards; opacity: 0;}
 
+.skill-per {animation-delay: 0.1s; width: ;}
 
