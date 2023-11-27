@@ -95,7 +95,7 @@ i {font-size: 16px;}
 .social_icons {display: flex; margin-top: 30px; margin-left: 5px; gap: 32px;}
 .social_icons .icon {display: flex; justify-content: center; align-items: center; width: 40px; height: 40px; color: var(--icon-color); border-radius: 50%; box-shadow:  0px 1px 5px 3px #8749f2;}
 
-.icon_circle {position: absolute; transform: translate(-50%, -50%); width: 40px; height: 40px; border-radius: 50px; animation: iconSlide 4s infinite alternate;}
+.icon_circle {position: absolute; transform: transform(-50%, -50%); width: 40px; height: 40px; border-radius: 50px; animation: iconSlide 4s infinite alternate;}
 
 @keyframes iconSlide {
     25% {
@@ -119,4 +119,35 @@ i {font-size: 16px;}
 .social_icons:hover .icon_circle {animation-play-state: paused; cursor: pointer;}
 
 /* featured image */
-.featured-image {}
+.featured-image {display: flex; justify-content: right; align-items: center; min-height: 80vh; width: 100%;}
+.image {margin-top: 10%; width: 500px; height: 700px; border-radius: 40% 40% 40% 40%; overflow: hidden; animation: imgFloat 5s ease-in-out infinite;}
+
+.image img {width: 500px; height: 700px; object-fit: cover;}
+
+@keyframes imgFloat {
+    50% {
+        transform: translateY(50px);
+    }
+}
+
+/* main */
+
+.section {padding-block: 5em;}
+.row {display: flex; width: 100%; gap: 50px;}
+.col {display: flex; width: 50%;}
+.top-header {text-align: center; margin-bottom: 5em;}
+.top-header h1 {font-weight: 600; color : var(--color-white); margin-bottom : 10px;}
+
+/* about-info */
+.about-info {position: relative; display: flex; align-items: center; flex-direction: column; padding-block: 45px 45px; padding-inline: 35px; border: 2px solid #fff; background: transparent; box-shadow: 1px 8px 10px 2px var(--first-shadow); border-radius: 20px;}
+.about-me * {-webkit-box-sizing: border-box; box-sizing: border-box; -webkit-transition: all 0.25s ease; transition: all 0.25s ease;}
+.about-info figcaption {width: 100%; padding: 25px; position: relative;}
+.about-me .profile {border-radius: 50%; position: absolute; bottom: 100%; left: 20px; z-index: 1; background-color: #fff; max-width: 90px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);}
+.about-me h2 {color: var(--text-color)}
+.about-me p {margin-top: 10px; color: var(--text-color);}
+.about-info .about-me-btn {text-decoration: none; font-size: 15px; padding: 10px 20px; cursor: pointer; border: none; border-radius: 20px; background: #8749f2; color: #fff; margin-top: 20px; font-weight: 500; transition: all 0.5s ease;}
+
+/* skill */
+.skill {position: relative; min-width: 600px; width: 100%; background: transparent; box-shadow: 1px 8px 10px 2px var(--first-shadow);}
+
+
