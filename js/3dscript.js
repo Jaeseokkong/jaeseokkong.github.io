@@ -60,12 +60,25 @@ controls.maxPolarAngle = Math.PI / 2;
 camera.position.z = 8;
 
 // AmbientLight 및 PointLight 추가
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+const ambientLight = new THREE.AmbientLight(0x999999, 0.9); // 연한 회색 조명
 scene.add(ambientLight);
 
-const blueLight = new THREE.PointLight(0x0000ff, 10, 100);
+const blueLight = new THREE.PointLight(0x0000ff, 4, 100);
 blueLight.position.set(0, 10, 0);
 scene.add(blueLight);
+
+// Directional Light 수정
+const directionalLight = new THREE.DirectionalLight(0xff6699, 0.5); // 분홍색 조명
+directionalLight.position.set(5, 5, 5);
+directionalLight.castShadow = true; // 그림자 효과 활성화
+scene.add(directionalLight);
+
+// 그림자 매개변수 설정
+directionalLight.shadow.mapSize.width = 512; // 그림자 텍스처 해상도
+directionalLight.shadow.mapSize.height = 512;
+directionalLight.shadow.camera.near = 0.5; // 카메라와의 최소 거리
+directionalLight.shadow.camera.far = 50; // 카메라와의 최대 거리
+
 
 // 애니메이션 함수
 const animate = () => {
