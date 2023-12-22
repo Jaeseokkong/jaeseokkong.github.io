@@ -1,0 +1,86 @@
+// Three.js & 3D Character
+import * as THREE from 'https://cdn.skypack.dev/three@0.120.0/build/three.module.js';
+import { OBJLoader } from 'https://cdn.skypack.dev/three@0.120.0/examples/jsm/loaders/OBJLoader.js';
+import { MTLLoader } from 'https://cdn.skypack.dev/three@0.120.0/examples/jsm/loaders/MTLLoader.js';
+import { OrbitControls } from 'https://cdn.skypack.dev/three@0.120.0/examples/jsm/controls/OrbitControls.js';
+
+// HTML에서 .featured-charactor 클래스를 가진 요소를 선택
+const featuredCharactorElement = document.querySelector('.featured-charactor');
+
+// Three.js Scene, Camera, Renderer 생성
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true });
+
+// Renderer 설정
+renderer.setSize(600, 600);
+renderer.setClearColor(0x000000, 0.0);
+renderer.domElement.tabIndex = 0;
+renderer.domElement.style.outline = 'none'; // 포커스된 상태에서의 테두리 제거
+featuredCharactorElement.appendChild(renderer.domElement);
+
+let model;
+
+// MTLLoader와 OBJLoader 생성
+const mtlLoader = new MTLLoader();
+const objLoader = new OBJLoader();
+
+const mtlFilePath = "../charactor.mtl";
+const textureFilePath = "../charactor.png";
+
+// MTLLoader를 사용하여 3D 모델 로드
+mtlLoader.load(mtlFilePath, (materials) => {
+    materials.preload();
+    objLoader.setMaterials(materials);
+
+    const objFilePath = "../charactor.obj";
+    
+    // OBJLoader를 사용하여 3D 모델 파일 로드
+    objLoader.load(objFilePath, (object) => {
+        model = object;
+
+         // 초기 회전 각도 및 위치 설정
+         model.rotation.x = Math.PI / 4; // 아래로 45도 회전
+         model.rotation.y = -Math.PI / 4; // 우측으로 45도 회전
+         model.position.y -= 2; // 아래로 2 단위 이동
+
+        // Scene에 모델 추가
+        scene.add(model);
+    });
+});
+
+// OrbitControls 추가
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; // 댐핑 활성화
+controls.dampingFactor = 0.1;
+controls.screenSpacePanning = false;
+controls.maxPolarAngle = Math.PI / 2;
+
+// Camera 위치 설정
+camera.position.z = 8;
+
+// AmbientLight 및 PointLight 추가
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+scene.add(ambientLight);
+
+const blueLight = new THREE.PointLight(0x0000ff, 10, 100);
+blueLight.position.set(0, 10, 0);
+scene.add(blueLight);
+
+// 애니메이션 함수
+const animate = () => {
+    requestAnimationFrame(animate);
+
+    // 모델의 회전 로직
+    if (model) {
+        model.rotation.y -= 0.01; // 원하는 회전 속도로 조절
+        model.rotation.x -= 0.001;
+    }
+
+    // OrbitControls 업데이트 및 렌더링
+    controls.update();
+    renderer.render(scene, camera);
+};
+
+// 애니메이션 시작
+animate();
