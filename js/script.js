@@ -87,3 +87,23 @@ function scrollActive() {
 }
 
 window.addEventListener("scroll", scrollActive);
+
+
+// url 이동
+const socialIcons = document.querySelector(".social_icons")
+socialIcons.addEventListener('click', function (e) {
+    let targetIcon = e.target;
+
+    if(targetIcon.tagName === 'IMG'){
+        targetIcon = targetIcon.parentElement;
+    }
+
+    targetIcon = targetIcon.closest('.icon');
+
+    if (targetIcon) {
+        const url = targetIcon.getAttribute("url");
+        if (url) {
+            window.open(url, "_blank")
+        }
+    }
+})
