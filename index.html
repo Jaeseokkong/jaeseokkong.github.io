@@ -3,33 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Development H'JS'</title>
+    <title>Portfolio - Developer H'JS'</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.8/css/line.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dark">
     <!-- Nav -->
     <div class="container">
-        <!-- <nav id="header">
+        <nav id="header">
             <div class="nav-logo">
-                <p class="nav-name">Logo</p>
+                <img src="/images/logo_dark.png"/>
+                <img src="/images/logo_white.png"/>
             </div>
             <div class="nav-menu" id="myNavMenu">
-                <ul class="nav_menu_list">
-                    <li class="nav_list">
+                <ul class="nav-menu-list">
+                    <li class="nav-list">
                         <a href="#home" class="nav-link active-link">HOME</a>
                         <div class="circle"></div>
                     </li>
-                    <li class="nav_list">
+                    <li class="nav-list">
                         <a href="#about" class="nav-link">ABOUT</a>
                         <div class="circle"></div>
                     </li>
-                    <li class="nav_list">
-                        <a href="#Projects" class="nav-link">PROJECTS</a>
+                    <li class="nav-list">
+                        <a href="#projects" class="nav-link">PROJECTS</a>
                         <div class="circle"></div>
                     </li>
-                    <li class="nav_list">
+                    <li class="nav-list">
                         <a href="#contact" class="nav-link">CONTACT</a>
                         <div class="circle"></div>
                     </li>
@@ -46,35 +47,34 @@
                 <i class="uil uil-bars" onclick="myMenuFunction()"></i>
             </div>
             <!-- // Mode Button -->
-        </nav> -->
+        </nav>
         <!-- // Nav -->
         <!-- Main -->
         <main class="wrapper">
-            <section class="featured-box" id="home">
-                <!-- <div class="featured-text">
+            <section class="section featured-box" id="home">
+                <div class="featured-text">
                     <div class="hello">
-                        <p>Hello I,m</p>
+                        <p>Hello I'm</p>
                     </div>
                     <div class="featured-name">
                         <span class="typedText"></span>
                     </div>
                     <div class="text-info">
-                        <p>My name is JaeSeok i,m a web developer with 3+ years of experience</p>
+                        <p>My name is <span>J</span>ae<span>S</span>eok i,m a web developer with 3+ years of experience</p>
                     </div>
-                    <div class="text-btn">
+                     <!-- <div class="text-btn">
                         <button class="btn hire-btn">Hire Me</button>
                         <button class="btn">Download CV<i class="uil uil-file"></i></button>
-                    </div>
+                    </div>  -->
                     <div class="social_icons">
                         <div class="icon_circle"></div>
-                        <div class="icon"><i class="uil uil-instagram"></i></div>
-                        <div class="icon"><i class="uil uil-linkedin-alt"></i></div>
-                        <div class="icon"><i class="uil uil-behance-alt"></i></div>
-                        <div class="icon"><i class="uil uil-github-alt"></i></div>
+                        <div class="icon" url="https://velog.io/@wotjr294/posts"><img src="/images/icons/velog_icon.png"></div>
+                        <div class="icon" url="https://fluorescent-croissant-142.notion.site/H-JS-Developer-72050b0c8d18493a845b1818ff5f1902"><img src="/images/icons/notion_icon.png"></div>
+                        <div class="icon" url="https://github.com/Jaeseokkong"><img src="/images/icons/github_icon.png"></div>
                     </div>
-                </div> -->
+                </div> 
                 <div class="featured-charactor">
-                    
+                
                 </div>
             </section>
             <!-- About Box -->
@@ -87,12 +87,13 @@
                         <div class="about-info">
                             <figure class="about-me">
                                 <figcaption>
-                                    <img src="temp.gif" alt="" class="profile">
-                                    <h2>FrontEnd Developer</h2>
-                                    <p>My name is JaeSeok! I,m a web FrontEnd developer with 3+ years of experience.</p>
+                                    <img src="/images/profile.jpg" alt="" class="profile">
+                                    <h2>Introduce</h2>
+                                    <p>안녕하세요! 웹 개발자 한재석입니다. JavaScript와 React를 주로 다루며, 데이터베이스 관리와 백엔드 개발에도 경험이 있습니다.</p>
+                                    <p>항상 새로운 기술에 대한 열린 태도를 유지하려 노력하고 있습니다. 코드를 작성할 때 가독성과 확장성을 중요시하며, 새로운 도전을 통해 성장하는 것을 좋아합니다.</p>
                                 </figcaption>
                             </figure>
-                            <button class="about-me-btn">Hire Me</button>
+                            <!-- <button class="about-me-btn">Hire Me</button> -->
                         </div>
                     </div>
                     <div class="skill">
@@ -141,7 +142,7 @@
             </section>
             <!-- //About Box  -->
             <!-- Project Box-->
-            <section class="section" id="Projects">
+            <section class="section" id="projects">
                 <div class="top-header">
                     <h1>Projects</h1>
                 </div>
@@ -228,6 +229,8 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+    <script src="js/script.js"></script>
     <script type="module" src="js/3dscript.js"></script>
 </body>
 </html>
