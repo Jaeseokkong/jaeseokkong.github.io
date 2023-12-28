@@ -121,7 +121,7 @@ const animate = () => {
             xRotation = 0.005;
         }
 
-         model.rotation.x += xRotation;
+        model.rotation.x += xRotation;
         
     }
 

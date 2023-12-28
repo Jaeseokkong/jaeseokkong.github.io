@@ -76,10 +76,12 @@ function scrollActive() {
         const sectionHeight = current.offsetHeight,
             sectionTop = current.offsetTop - 50,
             sectionId= current.getAttribute("id");
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionTop + sectionHeight) {
-            document.querySelectorAll(".nav-menu a[href*='" + sectionId + "']")[0].classList.add("active-link");
+            console.log(sectionId)
+            console.log(document.querySelectorAll(".nav-menu a[href*=" + sectionId + "]"))
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                document.querySelectorAll(".nav-menu a[href*=" + sectionId + "]")[0].classList.add("active-link");
         } else {
-            document.querySelectorAll(".nav-menu a[href*='" + sectionId + "']")[0].classList.remove("active-link");
+            document.querySelectorAll(".nav-menu a[href*=" + sectionId + "]")[0].classList.remove("active-link");
         }
     });
 }

@@ -36,6 +36,7 @@
     --icon-color: #242526;
     --mode-color: #ccc;
     --point-color: #1C39BB;
+    --hexagon-color: #fff;
 }
 
 body {background: var(--body-color);}
@@ -68,8 +69,8 @@ body.dark .nav-logo img:nth-child(1) {opacity: 1;}
 body.dark .nav-logo img:nth-child(2) {opacity: 0;}
 
 .nav-menu, .nav-menu-list {display: flex; gap: 30px;}
-.nav-menu .nav-list {list-style: none; position: relative;} 
-.nav-link {text-decoration: none; color: var(--text-color); font-weight: 500; /*padding-inline: 15px;*/ margin-inline: 20px;}
+.nav-menu .nav-list {list-style: none; position: relative; display: flex;} 
+.nav-link {text-decoration: none; color: var(--text-color); font-weight: 500; padding-inline: 15px; margin: auto;}
 .nav-menu-btn {display: none;}
 .nav-menu-btn i {font-size: 28px; cursor: pointer; color: var(--nav-icon)}
 .active-link {position: relative; color: var(--first-color); transition: 0.3s;}
@@ -167,8 +168,9 @@ i {font-size: 16px;}
 .about-info .about-me-btn {text-decoration: none; font-size: 15px; padding: 10px 20px; cursor: pointer; border: none; border-radius: 20px; background: var(--point-color); color: #fff; margin-top: 20px; font-weight: 500; transition: all 0.5s ease;}
 
 /* skill */
-.skill {position: relative; max-width: 600px; width: 100%; background: transparent; box-shadow: 1px 8px 10px 2px var(--first-shadow); padding : 10px 20px; border-radius: 20px; border: 2px solid #fff;}  
-.skill .skill-box {width: 100%; margin: 25px 0;}
+.skill {position: relative; max-width: 600px; width: 40%; background: transparent; box-shadow: 1px 8px 10px 2px var(--first-shadow); padding : 10px 20px; border-radius: 20px; border: 2px solid #fff;}  
+.skill h2, .skill h3 {color: var(--text-color)}
+/* .skill .skill-box {width: 100%; margin: 25px 0;}
 .skill-box .title {display: block; font-size: 14px; font-weight: 600; color: var(--text-color);}
 .skill-box .skill-bar {height: 8px; width: 100%; border-radius: 6px; margin-top: 6px; background: rgba(0, 0, 0, 0.1);}
 .skill-box .skill-per {position: relative; display: block; height: 100%;width: 90%;border-radius: 6px; background: var(--point-color); animation: progress 0.4s ease-in-out forwards; opacity: 0;}
@@ -177,7 +179,57 @@ i {font-size: 16px;}
 .skill-per.html{animation-delay: 0.1s; width: 80%;}
 .skill-per.css{animation-delay: 0.1s; width: 70%;}
 .skill-per.react{animation-delay: 0.1s; width: 90%;}
-.skill-per.java{animation-delay: 0.1s; width: 70%;}
+.skill-per.java{animation-delay: 0.1s; width: 70%;} */
+
+.skill-wrapper {
+    position: relative;
+    width: 100px;
+    height: 115px;
+    overflow:visible;
+}
+
+.hexagon {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background-color: #000; /* 검은색 육각형 배경 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+  }
+  
+  .hexagon::after {
+    content: "";
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background-color: #000; /* 검은색 육각형 배경 */
+    z-index: -1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+
+.hexagon img {position: absolute; max-width: 50%; max-height: 100%; margin: 0 auto; z-index: 2; left : 50%; top: 50%; transform: translate(-50%, -50%);}
+.hexagon h4 {position: absolute; left: 50%; bottom: -7.5%; transform: translate(-50%, -50%); z-index: 3; }
+
+.hexagon-wrap {
+    filter: drop-shadow(2px 3px 2px rgba(0, 0, 0, 0.5));
+}
+
+.hexagon2 {
+    position: relative;
+    width: 100px;
+    height: 115px;
+    background-color: yellow;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+  .hexagon2 img {position: absolute; max-width: 50%; max-height: 100%; margin: 0 auto; z-index: 2; left : 50%; top: 50%; transform: translate(-50%, -50%);}
+.hexagon2 h4 {position: absolute; left: 50%; bottom: -7.5%; transform: translate(-50%, -50%); z-index: 3; }
 
 @keyframes progress {
     0% {
@@ -189,7 +241,7 @@ i {font-size: 16px;}
     }
 }
 
-.skill-per .tooltip {position: absolute; right: -14px; top: -40px; font-size: 9px; color: #fff; padding: 1px 10px; border-radius: 20px; background: var(--point-color); z-index: 1;}
+.skill-per .tooltip {position: absolute; right: -14px; top: -25px; font-size: 9px; color: #fff; padding: 1px 10px; border-radius: 20px; background: var(--point-color); z-index: 1;}
 
 /* Projects box */
 .project-container {display: flex; width: 100%; justify-content: space-between; gap: 20px; flex-wrap: wrap;}
