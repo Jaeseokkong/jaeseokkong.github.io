@@ -173,7 +173,7 @@ i {font-size: 16px;}
 .skill {background: transparent; box-shadow: 1px 8px 10px 2px var(--first-shadow); padding : 10px 20px; border-radius: 20px; border: 2px solid #fff; display: flex; flex-direction: column;}  
 .skill h2, .skill h3 {color: var(--text-color)}
 .skill .skill-header {display: block; width: 100%; height: fit-content; text-align: center;}
-.skill .frontend {display: flex; flex-direction: column; width: fit-content; margin: auto;}
+.skill .frontend {display: flex; flex-direction: column; width: fit-content; margin: 30px auto;}
 
 .skill-wrapper {width: 100%; overflow:visible; display: flex;}
 .skill-wrapper:nth-child(even) {}
@@ -181,6 +181,7 @@ i {font-size: 16px;}
 .skill-wrapper:nth-child(n+2){margin-top: -15px;}
 
 .hexagon-wrap {filter: drop-shadow(2px 3px 2px rgba(150, 150, 150, 0.5)); margin-left: 20px;}
+.hexagon-wrap.html {margin-left: 40px;}
 .skill .skill-wrapper:nth-child(2) .hexagon-wrap:nth-child(n+2) {margin-top: 30px;}
 .skill .skill-wrapper:nth-child(2) .hexagon-wrap:nth-child(2) {margin-left: 80px;}
 .skill .skill-wrapper:nth-child(n+3) {padding-left: 60px;}
