@@ -182,7 +182,13 @@ i {font-size: 16px;}
 
 .hexagon-wrap {filter: drop-shadow(2px 3px 2px rgba(150, 150, 150, 0.5)); margin-left: 20px;}
 .hexagon-wrap.html {margin-left: 40px;}
-.hexagon-wrap.css::after {content: ""; width: 1px; height: 17px; position:absolute; border-left: 4px solid blue; left: 20px; bottom: -2px; transform: rotateZ(30deg); box-shadow: 1px 1px 5px #fff;}
+.hexagon-wrap .line {width: 1px; height: 17px; position:absolute; box-shadow: 1px 1px 5px #fff;}
+.hexagon-wrap .left-bottom { border-left: 4px solid blue; left: 20px; bottom: -2px; transform: rotateZ(30deg); }
+.hexagon-wrap .left { border-left: 4px solid blue; left: -10px; bottom: 50px; transform: rotateZ(90deg); }
+.hexagon-wrap .left-top { border-left: 4px solid blue; left: 20px; top: -2px; transform: rotateZ(-30deg); }
+.hexagon-wrap .right-bottom { border-left: 4px solid blue; right: 20px; bottom: -2px; transform: rotateZ(-30deg); }
+.hexagon-wrap .right { border-left: 4px solid blue; right: -10px; bottom: 50px; transform: rotateZ(90deg); }
+.hexagon-wrap .right-top { border-left: 4px solid blue; right: 20px; top: -2px; transform: rotateZ(30deg); }
 .skill .skill-wrapper:nth-child(2) .hexagon-wrap:nth-child(n+2) {margin-top: 30px;}
 .skill .skill-wrapper:nth-child(2) .hexagon-wrap:nth-child(2) {margin-left: 80px;}
 .skill .skill-wrapper:nth-child(n+3) {padding-left: 60px;}
