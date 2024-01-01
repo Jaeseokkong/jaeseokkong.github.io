@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Developer H'JS'</title>
+    <title>H'JS'</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.8/css/line.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/images/x-icon.png" type="image/x-icon">
 </head>
 <body class="dark">
     <!-- Nav -->
@@ -83,7 +84,7 @@
                     <h1>About me</h1>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col col40">
                         <div class="about-info">
                             <figure class="about-me">
                                 <figcaption>
@@ -96,49 +97,103 @@
                             <!-- <button class="about-me-btn">Hire Me</button> -->
                         </div>
                     </div>
-                    <div class="skill">
+                    <div class="col col60 skill">
                         <div class="skill-header">
                             <h2>🌐 Development Skill Tree 🚀</h2>
                         </div>
                         <div class="frontend">
-                            <div class="skill-type">
-                                <h3>frontend</h3>
-                            </div>
                             <div class="skill-wrapper">
-                                <svg width="100" height="115" xmlns="http://www.w3.org/2000/svg">
-                                    <polygon points="50,0 100,25 100,75 50,100 0,75 0,25" style="fill:yellow;"/>
-                                    <defs>
-                                      <filter id="inset-shadow" x="-50%" y="-50%" width="200%" height="200%">
-                                        <feComponentTransfer in="SourceAlpha">
-                                          <feFuncA type="table" tableValues="1 0" />
-                                        </feComponentTransfer>
-                                        <feGaussianBlur stdDeviation="3"/>
-                                        <feOffset dx="2" dy="3" result="offsetblur"/>
-                                        <feFlood flood-color="black" result="color"/>
-                                        <feComposite in2="offsetblur" operator="in"/>
-                                        <feMerge>
-                                          <feMergeNode in="color"/>
-                                          <feMergeNode in="SourceGraphic"/>
-                                        </feMerge>
-                                      </filter>
-                                    </defs>
-                                    <polygon points="50,0 100,25 100,75 50,100 0,75 0,25" style="filter:url(#inset-shadow);"/>
-                                  </svg>
-                            </div>
-                        </div>
-                        <div class="backend">
-                            <div class="skill-wrapper">
-                                <div class="hexagon-wrap">
-                                    <div class="css hexagon2">
+                                <div class="hexagon-wrap css">
+                                    <div class="hexagon">
                                         <img src="/images/skills/css.png"/>
-                                        <h4>css</h4>
+                                        <h4>CSS</h4>
+                                    </div>
+                                    <div class="line left-bottom"></div>
+                                    <div class="line left"></div>
+                                    <div class="line left-top"></div>
+                                    <div class="line top"></div>
+                                    <div class="line right-top"></div>
+                                    <div class="line right"></div>
+                                    <div class="line right-bottom"></div>
+                                </div>
+                                <div class="hexagon-wrap empty"></div>
+                                <div class="hexagon-wrap html">
+                                    <div class="hexagon">
+                                        <img src="/images/skills/html.png"/>
+                                        <h4>HTML</h4>
                                     </div>
                                 </div>
-                                <div class="hexagon-wrap">
-                                    <div class="css hexagon2">
-                                        <img src="/images/skills/css.png"/>
-                                        <h4>css</h4>
+                            </div>
+                            <div class="skill-wrapper">
+                                <div class="hexagon-wrap styled-components">
+                                    <div class="hexagon two-line">
+                                        <img src="/images/skills/styled_components.png"/>
+                                        <h4>Styled<br>Components</h4>
                                     </div>
+                                </div>
+                                <div class="hexagon-wrap typescript">
+                                    <div class="hexagon">
+                                        <img src="/images/skills/typescript.png"/>
+                                        <h4>TypeScript</h4>
+                                    </div>
+                                </div>
+                                <div class="hexagon-wrap react">
+                                    <div class="hexagon">
+                                        <img src="/images/skills/react.png"/>
+                                        <h4>React</h4>
+                                    </div>
+                                </div>
+                                <div class="hexagon-wrap react-navtive">
+                                    <div class="hexagon two-line">
+                                        <img src="/images/skills/react_native.png"/>
+                                        <h4>React<br>Native</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-wrapper">
+                                <div class="hexagon-wrap jquery">
+                                    <div class="hexagon">
+                                        <img src="/images/skills/jquery.png"/>
+                                        <h4>jQuery</h4>
+                                    </div>
+                                </div>
+                                <div class="hexagon-wrap javascript">
+                                    <div class="hexagon">
+                                        <img src="/images/skills/javascript.png"/>
+                                        <h4>JavaScript</h4>
+                                    </div>
+                                </div>
+                                <div class="hexagon-wrap redux">
+                                    <div class="hexagon">
+                                        <img src="/images/skills/redux.png"/>
+                                        <h4>Redux</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-wrapper">
+                                <div class="hexagon-wrap empty">
+                                </div>
+                                <div class="hexagon-wrap empty">
+                                </div>
+                                <div class="hexagon-wrap nextjs">
+                                    <div class="hexagon">
+                                        <img src="/images/skills/nextjs.png"/>
+                                        <h4>Nextjs</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-wrapper">
+                                <div class="hexagon-wrap firebase">
+                                    <div class="hexagon">
+                                        <img src="/images/skills/firebase.png"/>
+                                        <h4>Firebase</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-wrapper">
+                                <div class="css hexagon">
+                                    <img src="/images/skills/css.png"/>
+                                    <h4>css</h4>
                                 </div>
                             </div>
                         </div>
