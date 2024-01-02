@@ -182,11 +182,12 @@ i {font-size: 16px;}
 .skill-wrapper:nth-child(odd) {margin-left: 60px}
 .skill-wrapper:nth-child(n+2){margin-top: -15px;}
 
-.skill-wrapper:nth-child(n+2) .hexagon-wrap .line {border-left: 4px solid #F7DF1E;}
-.skill-wrapper:nth-child(n+5) .hexagon-wrap .line {border-left: 4px solid #1572B6;}
-
 .skill-wrapper .hexagon-wrap {filter: drop-shadow(0px 0px 2px rgba(150, 150, 150, 0.5)); margin-left: 17px;}
-.skill-wrapper .hexagon-wrap .line {width: 1px; height: 17px; position:absolute; border-left: 4px solid #C83405;}
+.skill-wrapper .hexagon-wrap .line {width: 1px; height: 17px; position:absolute;}
+.css .line {border-left: 4px solid #C83405;}
+.typescript .line, .react .line, .react-native .line, .jquery .line, .javascript .line {border-left: 4px solid #F7DF1E;}
+.rest .line {border-left: 4px solid #F7DF1E;}
+
 .skill-wrapper .hexagon-wrap .left-bottom { left: 20px; bottom: -2px; transform: rotateZ(30deg); }
 .skill-wrapper .hexagon-wrap .left { left: -11px; bottom: 50px; transform: rotateZ(90deg); }
 .skill-wrapper .hexagon-wrap .left-top {left: 20px; top: -2px; transform: rotateZ(-30deg); }
