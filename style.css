@@ -36,7 +36,7 @@
     --icon-color: #242526;
     --mode-color: #ccc;
     --point-color: #1C39BB;
-    --hexagon-color: #fff;
+    --hexagon-color: #FCFCFC;
 }
 
 body {background: var(--body-color);}
@@ -53,6 +53,7 @@ body.dark {
     --logo-color: #fff;
     --icon-color: #1C39BB;
     --mode-color: #fff;    
+    --hexagon-color: #202425;
 }
 
 .continaer {width: 100%; position: relative;}
@@ -181,26 +182,28 @@ i {font-size: 16px;}
 .skill-wrapper:nth-child(odd) {margin-left: 60px}
 .skill-wrapper:nth-child(n+2){margin-top: -15px;}
 
-.hexagon-wrap {filter: drop-shadow(2px 3px 2px rgba(150, 150, 150, 0.5)); margin-left: 20px;}
-.hexagon-wrap.html {margin-left: 40px;}
-.hexagon-wrap .line {width: 1px; height: 17px; position:absolute; box-shadow: 1px 1px 5px #fff;}
-.hexagon-wrap .left-bottom { border-left: 4px solid blue; left: 20px; bottom: -2px; transform: rotateZ(30deg); }
-.hexagon-wrap .left { border-left: 4px solid blue; left: -10px; bottom: 50px; transform: rotateZ(90deg); }
-.hexagon-wrap .left-top { border-left: 4px solid blue; left: 20px; top: -2px; transform: rotateZ(-30deg); }
-.hexagon-wrap .right-bottom { border-left: 4px solid blue; right: 20px; bottom: -2px; transform: rotateZ(-30deg); }
-.hexagon-wrap .right { border-left: 4px solid blue; right: -10px; bottom: 50px; transform: rotateZ(90deg); }
-.hexagon-wrap .right-top { border-left: 4px solid blue; right: 20px; top: -2px; transform: rotateZ(30deg); }
-.skill .skill-wrapper:nth-child(2) .hexagon-wrap:nth-child(n+2) {margin-top: 30px;}
-.skill .skill-wrapper:nth-child(2) .hexagon-wrap:nth-child(2) {margin-left: 80px;}
-.skill .skill-wrapper:nth-child(n+3) {padding-left: 60px;}
-.skill .skill-wrapper:nth-child(n+5) {padding-left: 0px;}
-.hexagon-wrap.html {padding-left: 40px;}
-.hexagon {position: relative; width: 100px; height: 115px; background-color: var(--text-color); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); transform-origin: center;}
+.skill-wrapper:nth-child(n+2) .hexagon-wrap .line {border-left: 4px solid #F7DF1E;}
+.skill-wrapper:nth-child(n+5) .hexagon-wrap .line {border-left: 4px solid #1572B6;}
+
+.skill-wrapper .hexagon-wrap {filter: drop-shadow(0px 0px 2px rgba(150, 150, 150, 0.5)); margin-left: 17px;}
+.skill-wrapper .hexagon-wrap .line {width: 1px; height: 17px; position:absolute; border-left: 4px solid #C83405;}
+.skill-wrapper .hexagon-wrap .left-bottom { left: 20px; bottom: -2px; transform: rotateZ(30deg); }
+.skill-wrapper .hexagon-wrap .left { left: -11px; bottom: 50px; transform: rotateZ(90deg); }
+.skill-wrapper .hexagon-wrap .left-top {left: 20px; top: -2px; transform: rotateZ(-30deg); }
+.skill-wrapper .hexagon-wrap .right-bottom {right: 20px; bottom: -2px; transform: rotateZ(150deg); }
+.skill-wrapper .hexagon-wrap .right {right: -11px; bottom: 50px; transform: rotateZ(90deg); }
+.skill-wrapper .hexagon-wrap .right-top { right: 20px; top: -2px; transform: rotateZ(30deg); }
+
+.hexagon {position: relative; width: 100px; height: 115px; background-color: var(--hexagon-color); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); transform-origin: center;  z-index: 1;}
 .empty {width: 100px; height: 115px;}
 .hexagon img {position: absolute; max-width: 50%; max-height: 50px; margin: 0 auto; z-index: 2; left : 50%; top: 42.5%; transform: translate(-50%, -50%);}
 .hexagon.two-line img {top: 40%;}
-.hexagon h4 {position: absolute; left: 50%; bottom: -3%; transform: translate(-50%, -50%); z-index: 3; color: var(--body-color)}
-.hexagon.two-line h4 {line-height: 10px; bottom: 10%; text-align: center; font-size: 14px;}
+.hexagon h4 {position: absolute; left: 50%; bottom: -3%; transform: translate(-50%, -50%); z-index: 3; color: var(--text-color)}
+.hexagon.two-line h4 {line-height: 10px; bottom: 10%; text-align: center; font-size: 14px; line-height: 100%;}
+.styled-components h4 {bottom: 9% !important;}
+.react-native h4 {bottom: 2%!important;}
+.expressjs h4 {bottom: 2% !important;}
+
 
 .hexagon-wrap.active {
     animation: rotateShadow 5s linear infinite;
