@@ -171,29 +171,31 @@ i {font-size: 16px;}
 .about-info .about-me-btn {text-decoration: none; font-size: 15px; padding: 10px 20px; cursor: pointer; border: none; border-radius: 20px; background: var(--point-color); color: #fff; margin-top: 20px; font-weight: 500; transition: all 0.5s ease;}
 
 /* skill */
-.skill {background: transparent; box-shadow: 1px 8px 10px 2px var(--first-shadow); padding : 10px 20px; border-radius: 20px; border: 2px solid #fff; display: flex; flex-direction: column;}  
+.skill {background: transparent; box-shadow: 1px 8px 10px 2px var(--first-shadow); padding : 10px 0px; border-radius: 20px; border: 2px solid #fff; display: flex; flex-direction: column; margin: 0 auto;}  
 .skill h2, .skill h3 {color: var(--text-color)}
-
 .skill .skill-header {display: block; width: 100%; height: fit-content; text-align: center;}
-.skill .frontend {display: flex; flex-direction: column; width: fit-content; margin: 30px auto;}
+.skill .skill-wrapper {display: flex; flex-direction: column; width: fit-content; margin: 30px auto;}
 
-.skill-wrapper {width: 100%; overflow:visible; display: flex;}
-.skill-wrapper:nth-child(even) {}
-.skill-wrapper:nth-child(odd) {margin-left: 60px}
-.skill-wrapper:nth-child(n+2){margin-top: -15px;}
+.skill-row {width: 100%; overflow:visible; display: flex;}
+.skill-row:nth-child(even) {}
+.skill-row:nth-child(odd) {margin-left: 60px}
+.skill-row:nth-child(n+2){margin-top: -15px;}
 
-.skill-wrapper .hexagon-wrap {filter: drop-shadow(0px 0px 2px rgba(150, 150, 150, 0.5)); margin-left: 17px;}
-.skill-wrapper .hexagon-wrap .line {width: 1px; height: 17px; position:absolute;}
-.css .line {border-left: 4px solid #C83405;}
+.skill-row .hexagon-wrap {filter: drop-shadow(0px 0px 2px rgba(150, 150, 150, 0.5));}
+.skill-row .hexagon-wrap:nth-child(n+2) {margin-left: 17px;}
+.skill-row .hexagon-wrap .line {width: 1px; height: 17px; position: absolute;}
+
+/* connection line */
+.css .line {border-left: 4px solid #E3800B;}
 .typescript .line, .react .line, .react-native .line, .jquery .line, .javascript .line {border-left: 4px solid #F7DF1E;}
-.rest .line {border-left: 4px solid #F7DF1E;}
-
-.skill-wrapper .hexagon-wrap .left-bottom { left: 20px; bottom: -2px; transform: rotateZ(30deg); }
-.skill-wrapper .hexagon-wrap .left { left: -11px; bottom: 50px; transform: rotateZ(90deg); }
-.skill-wrapper .hexagon-wrap .left-top {left: 20px; top: -2px; transform: rotateZ(-30deg); }
-.skill-wrapper .hexagon-wrap .right-bottom {right: 20px; bottom: -2px; transform: rotateZ(150deg); }
-.skill-wrapper .hexagon-wrap .right {right: -11px; bottom: 50px; transform: rotateZ(90deg); }
-.skill-wrapper .hexagon-wrap .right-top { right: 20px; top: -2px; transform: rotateZ(30deg); }
+.rest_api .line {border-left: 4px solid #3EFFA2;}
+.server .line, .nodejs .line, .spring .line, .expressjs .line {border-left: 4px solid #3ED1FF;}
+.skill-row .hexagon-wrap .left-bottom { left: 20px; bottom: -2px; transform: rotateZ(30deg); }
+.skill-row .hexagon-wrap .left { left: -11px; bottom: 50px; transform: rotateZ(90deg); }
+.skill-row .hexagon-wrap .left-top {left: 20px; top: -2px; transform: rotateZ(-30deg); }
+.skill-row .hexagon-wrap .right-bottom {right: 20px; bottom: -2px; transform: rotateZ(150deg); }
+.skill-row .hexagon-wrap .right {right: -11px; bottom: 50px; transform: rotateZ(90deg); }
+.skill-row .hexagon-wrap .right-top { right: 20px; top: -2px; transform: rotateZ(30deg); }
 
 .hexagon {position: relative; width: 100px; height: 115px; background-color: var(--hexagon-color); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); transform-origin: center;  z-index: 1;}
 .empty {width: 100px; height: 115px;}
@@ -275,6 +277,11 @@ footer {display: flex; justify-content: center; align-items: center; flex-direct
     .featured-text {padding: 0;}
     .image,
     .image img {width: 320px; height: 320px;}
+    /* .skill-row:nth-child(odd) {margin-left: 45px}
+    .skill-row:nth-child(n+2){margin-top: -12px;}
+
+    .skill-row .hexagon-wrap {filter: drop-shadow(0px 0px 2px rgba(150, 150, 150, 0.5)); margin-left: 12px;}
+    .skill-row .hexagon-wrap .line {width: 1px; height: 17px; position: absolute;} */
 }
 
 /* media query = 900px */
@@ -295,14 +302,13 @@ footer {display: flex; justify-content: center; align-items: center; flex-direct
     .about-info,
     .contact-info,
     .skill {width: 100%;}
-    .skill {max-width: 100%;}
     .project-container {justify-content: center;}
     .project-box {width: 80%;}
     .mode {display: flex; align-items: center; margin-left: 55%;}
-
     .featured-box  {height: fit-content;}
     .featured-text {min-height: fit-content; margin-top: 0;}
     .featured-charactor {margin: 0; width: 100%; margin: auto;}
+    .wrapper {padding: 20px;}
 }
 
 /* media query = 540px */
@@ -312,4 +318,23 @@ footer {display: flex; justify-content: center; align-items: center; flex-direct
     .form-inputs {flex-direction: column;}
     .input-field {width: 100%;}
     .mode {margin-left: 35%;}
+
+    .skill-row:nth-child(odd) {margin-left: 40px}
+    .skill-row:nth-child(n+2){margin-top: -10px;}
+    .skill-row .hexagon-wrap:nth-child(n+2) {margin-left: 9px;}
+    .skill-row .hexagon-wrap .line {width: 1px; height: 17px; position: absolute;}
+    .empty {width: 70px; height: 80px;}
+
+    .hexagon {width: 70px; height: 80px;}
+    .hexagon img {max-width: 50%; max-height: 50%;}
+    .hexagon h4 {font-size: 12px; bottom: 0%;}
+    .hexagon.two-line h4 {font-size: 11px;}
+
+    .skill-row .hexagon-wrap .line {width: 1px; height: 10px;}
+    .skill-row .hexagon-wrap .left-bottom { left: 12.5px; bottom: 0px; transform: rotateZ(30deg); }
+    .skill-row .hexagon-wrap .left { left: -5px; bottom: 40px; transform: rotateZ(90deg); }
+    .skill-row .hexagon-wrap .left-top {left: 12.5px; top: 0px; transform: rotateZ(-30deg); }
+    .skill-row .hexagon-wrap .right-bottom {right: 12.5px; bottom: 0px; transform: rotateZ(150deg);}
+    .skill-row .hexagon-wrap .right {right: -5px; bottom: 40px; transform: rotateZ(90deg); }
+    .skill-row .hexagon-wrap .right-top { right: 12.5px; top: 0px; transform: rotateZ(30deg);}
 }

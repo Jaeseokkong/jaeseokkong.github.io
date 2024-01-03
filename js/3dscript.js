@@ -63,6 +63,7 @@ mtlLoader.load(mtlFilePath, (materials) => {
 
 // OrbitControls 추가
 const controls = new OrbitControls(camera, renderer.domElement);
+controls.enabled = false;
 controls.enableDamping = true; // 댐핑 활성화
 controls.dampingFactor = 0.1;
 controls.screenSpacePanning = false;
@@ -81,8 +82,14 @@ camera.position.z = 30; // 초기 카메라 위치
 const cameraAnimation = new TWEEN.Tween({ z: camera.position.z })
     .to({ z: targetCameraZ }, 2000) // 2초 동안 애니메이션
     .easing(TWEEN.Easing.Quadratic.Out) // 원하는 이징 함수 선택
+    .onStart(() => {
+        controls.enabled = false;
+    })
     .onUpdate(obj => {
         camera.position.z = obj.z;
+    })
+    .onComplete(() => {
+        controls.enabled = true;
     })
     .start(); // 애니메이션 시작
 
