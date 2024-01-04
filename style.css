@@ -174,7 +174,7 @@ i {font-size: 16px;}
 .skill {background: transparent; box-shadow: 1px 8px 10px 2px var(--first-shadow); padding : 10px 0px; border-radius: 20px; border: 2px solid #fff; display: flex; flex-direction: column; margin: 0 auto;}  
 .skill h2, .skill h3 {color: var(--text-color)}
 .skill .skill-header {display: block; width: 100%; height: fit-content; text-align: center;}
-.skill .skill-wrapper {display: flex; flex-direction: column; width: fit-content; margin: 30px auto;}
+.skill .skill-container {display: flex; flex-direction: column; width: fit-content; margin: 30px auto;}
 
 .skill-row {width: 100%; overflow:visible; display: flex;}
 .skill-row:nth-child(even) {}
@@ -231,18 +231,19 @@ i {font-size: 16px;}
     }
 }
 
+
+
+
 /* Projects box */
 .project-container {display: flex; width: 100%; justify-content: space-between; gap: 20px; flex-wrap: wrap;}
-.project-box {position: relative; display: flex; justify-content: center; align-items: center; flex-direction: column; width: 30%; height: 250px; background: transparent; border: 2px solid #fff; border-radius: 20px; box-shadow: 1px 8px 10px 2px var(--first-shadow); overflow: hidden; cursor: pointer;}
-.project-box > i {font-size: 50px; color: var(--point-color); margin-bottom: 25px;}
-.project-box label {font-size: 15px; color: var(--text-color);}
-.project-box::after, 
-.contact-info::after {content: ""; position: absolute; bottom: -100%; background: var(--point-color); width: 100%; height: 100%; transition: 0.4s; z-index: 0.1;}
-.project-box:hover.project-box::after, .contact-info:hover.contact-info::after {bottom: 0;}
-.project-box:hover.project-box i, 
-.project-box:hover.project-box > h3,
-.project-box:hover.project-box > label {color: #fff; z-index: 2;}
+.project-container .chip-wrap {transform: perspective(800px); transform-style: preserve-3d; cursor: pointer; height: fit-content; margin : auto 0;}
+.project-container .chip-wrap .card {width:240px; height: 320px; background-color: #333;}
+.project-container .chip-wrap .card:hover {transition: 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95);}
+
 .top-header span {color: var(--text-color); }
+
+
+
 
 /* Contact info */
 .contact-info {position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-top: 0; padding: 20px 40px; width: 100%; height: 380px; border: 2px solid #fff; border-radius: 20px; box-shadow: 1px 8px 10px 2px var(--first-shadow); overflow: hidden; cursor: pointer;}
@@ -332,9 +333,12 @@ footer {display: flex; justify-content: center; align-items: center; flex-direct
 
     .skill-row .hexagon-wrap .line {width: 1px; height: 10px;}
     .skill-row .hexagon-wrap .left-bottom { left: 12.5px; bottom: 0px; transform: rotateZ(30deg); }
-    .skill-row .hexagon-wrap .left { left: -5px; bottom: 40px; transform: rotateZ(90deg); }
+    .skill-row .hexagon-wrap .left { left: -5px; bottom: 35px; transform: rotateZ(90deg); }
     .skill-row .hexagon-wrap .left-top {left: 12.5px; top: 0px; transform: rotateZ(-30deg); }
     .skill-row .hexagon-wrap .right-bottom {right: 12.5px; bottom: 0px; transform: rotateZ(150deg);}
-    .skill-row .hexagon-wrap .right {right: -5px; bottom: 40px; transform: rotateZ(90deg); }
+    .skill-row .hexagon-wrap .right {right: -5px; bottom: 35px; transform: rotateZ(90deg); }
     .skill-row .hexagon-wrap .right-top { right: 12.5px; top: 0px; transform: rotateZ(30deg);}
 }
+
+.project-container {height : 100vh}
+#header {display: none;}
