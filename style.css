@@ -237,7 +237,7 @@ i {font-size: 16px;}
 /* Projects box */
 .project-container {display: flex; width: 100%; justify-content: space-between; gap: 20px; flex-wrap: wrap;}
 .project-container .chip-wrap {transform: perspective(800px); transform-style: preserve-3d; cursor: pointer; height: fit-content; margin : auto 0;}
-.project-container .chip-wrap .card {width:240px; height: 320px; background-color: #333;}
+.project-container .chip-wrap .card {width:240px; height: 320px; background-color: #333; transition: transform 0.1s ease-in-out;}
 .project-container .chip-wrap .card:hover {transition: 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95);}
 
 .top-header span {color: var(--text-color); }

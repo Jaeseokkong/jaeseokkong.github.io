@@ -110,25 +110,33 @@ socialIcons.addEventListener('click', function (e) {
 
 
 // chip 이벤트
+const card = document.getElementById('card');
+const cardBg = document.querySelector('.card-bg');
 let width = 0;
 let height = 0;
 let mouseX = 0;
 let mouseY = 0;
 let mouseLeaveDelay = null;
 
-const card = document.getElementById('card')
-
 function handleMouseMove(e) {
-    mouseX = e.pageX - card.offsetLeft - width/2;
-    mouseY = e.pageY - card.offsetTop - height/2;
+    const rect = card.getBoundingClientRect();
+    mouseX = e.clientX - rect.left - width / 2;
+    mouseY = e.clientY - rect.top - height / 2;
 
-    const rX = mouseX / width * 10;
-    const rY = mouseY / height * -40;
 
-    const tX = mouseX / width * -40;
-    const tY = mouseY / height * -40;
+    const rX = (mouseX / width) * 10;
+    const rY = (mouseY / height) * -40;
+    const tX = (mouseX / width) * -40;
+    const tY = (mouseY / height) * -40;
 
-    card.style.transform = `rotateY(${rX}deg) rotateX(${rY}deg) translateZ(50px)`
+    requestAnimationFrame(() => {
+        const rX = (mouseX / width) * 10;
+        const rY = (mouseY / height) * -15;
+        const tX = (mouseX / width) * -40;
+        const tY = (mouseY / height) * -40;
+
+        card.style.transform = `rotateY(${rX}deg) rotateX(${rY}deg)`;
+    });
 }
 
 function handleMouseEnter() {
@@ -137,12 +145,18 @@ function handleMouseEnter() {
 
 function handleMouseLeave() {
     mouseLeaveDelay = setTimeout(() => {
-      mouseX = 0;
-      mouseY = 0;
-      card.style.transform = 'rotateY(0deg) rotateX(0deg)';
-      cardBg.style.transform = 'translateX(0px) translateY(0px)';
+        mouseX = 0;
+        mouseY = 0;
+        card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+        //cardBg.style.transform = 'translateX(0px) translateY(0px)';
     }, 1000);
 }
 
-width = card.offsetWidth;
-height = card.offsetHeight;
+document.addEventListener('DOMContentLoaded', () => {
+    width = card.offsetWidth;
+    height = card.offsetHeight;
+
+    card.addEventListener('mousemove', handleMouseMove);
+    card.addEventListener('mouseenter', handleMouseEnter);
+    card.addEventListener('mouseleave', handleMouseLeave);
+});
