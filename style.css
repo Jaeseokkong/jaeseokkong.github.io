@@ -37,6 +37,7 @@
     --mode-color: #ccc;
     --point-color: #1C39BB;
     --hexagon-color: #FCFCFC;
+    --case-image:  url('images/projects/case_white.png');
 }
 
 body {background: var(--body-color);}
@@ -54,6 +55,7 @@ body.dark {
     --icon-color: #1C39BB;
     --mode-color: #fff;    
     --hexagon-color: #202425;
+    --case-image: url('images/projects/case_dark.png');
 }
 
 .continaer {width: 100%; position: relative;}
@@ -236,16 +238,17 @@ i {font-size: 16px;}
 
 /* Projects box */
 .project-container {display: flex; width: 100%; justify-content: space-between; gap: 20px; flex-wrap: wrap;}
-.project-container .chip-wrap {transform: perspective(800px); transform-style: preserve-3d; cursor: pointer; height: fit-content; margin: 10px; box-shadow: inset 1px 1px 3px #1C39BB; padding : 5px;}
-.project-container .chip-wrap::before {content: ''; position: absolute; top: -10%; left: 25%; width: 50%; aspect-ratio: 1; border-radius: 50%; background-color: transparent; box-shadow: inset 1px 1px 3px #1C39BB;}
-.project-container .chip-wrap .chip {width:240px; height: 340px; background-color: #3B3B3B; transition: 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95); border-radius: 20px; box-shadow: rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.5) 0 0; padding : 20px 15px 30px 15px; position: relative; overflow: hidden;}
+.project-container .chip-wrap {transform: perspective(800px); transform-style: preserve-3d; cursor: pointer; height: fit-content; margin: 20px; padding : 5px; width: 270px; height: 420px; display: flex; }
+.project-container .chip-wrap::before {content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: var(--case-image); background-size: cover; transform: translateZ(-30px); z-index: -1; transform-origin: center center;}
+.project-container .chip-wrap .chip {width:240px; height: 340px; background-color: #3B3B3B; transition: 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95); border-radius: 20px; box-shadow: rgba(0, 0, 1px, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.5) 0 0; padding : 20px 15px 30px 15px; position: relative; overflow: hidden; margin-top: 60px; margin-left: 10px; transition: margin-top 0.3s ease-in-out;}
+.project-container .chip-wrap .chip.active {margin-top: 10px;}
 .project-container .chip-wrap .chip:hover {border: 1px solid #fff;}
-.project-container .chip-wrap .chip::after {content: ''; display: block; width: 240px; height: 340px; z-index: 2; background-color: transparent; position: absolute; top: 0; left: 0; border-radius: 20px; border: 15px solid #3B3B3B; border-bottom: 50px solid #3B3B3B; box-sizing: border-box; z-index: -1;}
-.chip .project-img {width: 100%; transform-origin: center center; position: absolute; left: 0%; top: 20%; z-index: -2;}
+.project-container .chip-wrap .chip::after {content: ''; display: block; width: 240px; height: 340px; background-color: transparent; position: absolute; top: 0; left: 0; border-radius: 20px; border: 15px solid #3B3B3B; border-bottom: 50px solid #3B3B3B; box-sizing: border-box; z-index: 1;}
+.chip .project-img {width: 100%; transform-origin: center center; position: absolute; left: 0%; top: 20%; z-index: 0;}
 .chip #tetris {width: 120%; left: -5%;}
 
 .chip .chip-bg {opacity: 0.5; position: absolute; top: -20px; left: -20px; width: 100%; height: 100%; padding: 20px; background-repeat: no-repeat; background-position: center; background-size: cover;   transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95); pointer-events: none;}
-.chip .chip-info {width: 210px; height: 100%; position: relative; border: 4px solid #000; border-radius: 12.5px;}
+.chip .chip-info {width: 210px; height: 100%; position: relative; border: 4px solid #000; border-radius: 12.5px; z-index: 2;}
 .chip .chip-info::before {content: ''; width: 33%; height: 7.5px; top: -7.5px; background-color: #000; position: absolute; left: 33%;}
 .chip .chip-info::after {content: ''; width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 12.5px solid #000; position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); z-index: 2;}
 .chip .chip-info .header {width: 100%; height: 20%; background-color: #D60C12; display: flex; justify-content: center; border-radius: 7.5px 7.5px 0 0;}

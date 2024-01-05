@@ -137,11 +137,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const rY = (mouseY / height) * -20;
                 const tX = (mouseX / width) * -40;
                 const tY = (mouseY / height) * -40;
-                chip.style.transition = 'transform 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95)';
+                chip.style.transition = 'transform 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95), margin-top 0.3s ease-in-out';
                 chip.style.transform = `rotateY(${rX}deg) rotateX(${rY}deg) translateZ(20px)`;
 
-                project.style.transition = 'transform 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95)';
-                project.style.transform = `rotateY(${-rX * 1.5}deg) rotateX(${-rY * 1.5}deg) translateZ(20px)`;
+                project.style.transition = 'transform 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95), margin-top 0.3s ease-in-out';
+                project.style.transform = `rotateY(${-rX}deg) rotateX(${-rY}deg) translateZ(20px)`;
             });
         }
 
@@ -161,8 +161,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1000);
         }
 
+        function handleClick() {
+            chip.classList.toggle('active')
+        }
+
         chip.addEventListener('mousemove', handleMouseMove);
         chip.addEventListener('mouseenter', handleMouseEnter);
         chip.addEventListener('mouseleave', handleMouseLeave);
+        chip.addEventListener('click', handleClick);
     });
 });
