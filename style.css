@@ -38,6 +38,7 @@
     --point-color: #1C39BB;
     --hexagon-color: #FCFCFC;
     --case-image:  url('images/projects/case_white.png');
+    --chip-border: #000;
 }
 
 body {background: var(--body-color);}
@@ -56,6 +57,8 @@ body.dark {
     --mode-color: #fff;    
     --hexagon-color: #202425;
     --case-image: url('images/projects/case_dark.png');
+    --chip-border: #fff;
+
 }
 
 .continaer {width: 100%; position: relative;}
@@ -157,6 +160,7 @@ i {font-size: 16px;}
 /* main */
 .section {padding-block: 5em; max-width: 1430px; margin: 0 auto;}
 .row {display: flex; width: 100%; gap: 50px; justify-content: space-between;}
+.col.two-row {display: flex; flex-direction: column; justify-content: space-between;}
 .col40, .col60 {display: flex;}
 .col40 {width: 40%}
 .col60 {width: 60%}
@@ -173,9 +177,11 @@ i {font-size: 16px;}
 .about-info .about-me-btn {text-decoration: none; font-size: 15px; padding: 10px 20px; cursor: pointer; border: none; border-radius: 20px; background: var(--point-color); color: #fff; margin-top: 20px; font-weight: 500; transition: all 0.5s ease;}
 
 /* skill */
-.skill {background: transparent; box-shadow: 1px 8px 10px 2px var(--first-shadow); padding : 10px 0px; border-radius: 20px; border: 2px solid #fff; display: flex; flex-direction: column; margin: 0 auto;}  
+.skill {background: transparent; box-shadow: 1px 8px 10px 2px var(--first-shadow); padding : 10px 0px; border-radius: 20px; border: 2px solid #fff; display: flex; flex-direction: column; margin: 0 auto; position: relative;}  
 .skill h2, .skill h3 {color: var(--text-color)}
 .skill .skill-header {display: block; width: 100%; height: fit-content; text-align: center;}
+.skill .skill-info {position: absolute; background-color: white; padding: 10px; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); max-width: 300px; z-index: 1; transform: scale(0); transition: transform 0.3s ease;}
+.skill .skill-info.active {transform: scale(1)}
 .skill .skill-container {display: flex; flex-direction: column; width: fit-content; margin: 30px auto;}
 
 .skill-row {width: 100%; overflow:visible; display: flex;}
@@ -208,6 +214,7 @@ i {font-size: 16px;}
 .styled-components h4 {bottom: 9% !important;}
 .react-native h4 {bottom: 2%!important;}
 .expressjs h4 {bottom: 2% !important;}
+.skill-row .hexagon-wrap.figma {margin-left: 65px}
 
 
 .hexagon-wrap.active {
@@ -238,12 +245,13 @@ i {font-size: 16px;}
 
 /* Projects box */
 .project-container {display: flex; width: 100%; justify-content: space-between; gap: 20px; flex-wrap: wrap;}
-.project-container .chip-wrap {transform: perspective(800px); transform-style: preserve-3d; cursor: pointer; height: fit-content; margin: 20px; padding : 5px; width: 270px; height: 420px; display: flex; }
+.project-container .chip-wrap {transform: perspective(800px); transform-style: preserve-3d; height: fit-content; margin: 20px; padding : 5px; width: 270px; height: 420px; display: flex; }
 .project-container .chip-wrap::before {content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: var(--case-image); background-size: cover; transform: translateZ(-30px); z-index: -1; transform-origin: center center;}
-.project-container .chip-wrap .chip {width:240px; height: 340px; background-color: #3B3B3B; transition: 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95); border-radius: 20px; box-shadow: rgba(0, 0, 1px, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.5) 0 0; padding : 20px 15px 30px 15px; position: relative; overflow: hidden; margin-top: 60px; margin-left: 10px; transition: margin-top 0.3s ease-in-out;}
+.project-container .chip-wrap span.empty {margin: auto; color: var(--text-color); padding-top: 50px; width: fit-content;}
+.project-container .chip-wrap .chip {width:240px; height: 340px; background-color: #3B3B3B; transition: 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95); border-radius: 20px; box-shadow: rgba(0, 0, 1px, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.5) 0 0; padding : 20px 15px 30px 15px; position: relative; overflow: hidden; margin-top: 60px; margin-left: 10px; transition: margin-top 0.3s ease-in-out; cursor: pointer; border: 2px solid #3B3B3B; box-sizing: border-box;}
 .project-container .chip-wrap .chip.active {margin-top: 10px;}
-.project-container .chip-wrap .chip:hover {border: 1px solid #fff;}
-.project-container .chip-wrap .chip::after {content: ''; display: block; width: 240px; height: 340px; background-color: transparent; position: absolute; top: 0; left: 0; border-radius: 20px; border: 15px solid #3B3B3B; border-bottom: 50px solid #3B3B3B; box-sizing: border-box; z-index: 1;}
+.project-container .chip-wrap .chip:hover {border: 2px solid var(--chip-border);}
+.project-container .chip-wrap .chip::after {content: ''; display: block; width: 240px; height: 340px; background-color: transparent; position: absolute; top: 0; left: 0; border-radius: 20px; border: 17.5px solid #3B3B3B; border-bottom: 50px solid #3B3B3B; box-sizing: border-box; z-index: 1;}
 .chip .project-img {width: 100%; transform-origin: center center; position: absolute; left: 0%; top: 20%; z-index: 0;}
 .chip #tetris {width: 120%; left: -5%;}
 
@@ -343,6 +351,7 @@ footer {display: flex; justify-content: center; align-items: center; flex-direct
     .skill-row:nth-child(odd) {margin-left: 40px}
     .skill-row:nth-child(n+2){margin-top: -10px;}
     .skill-row .hexagon-wrap:nth-child(n+2) {margin-left: 9px;}
+    .skill-row .hexagon-wrap.figma {margin-left: 45px}
     .skill-row .hexagon-wrap .line {width: 1px; height: 17px; position: absolute;}
     .empty {width: 70px; height: 80px;}
 
@@ -359,5 +368,3 @@ footer {display: flex; justify-content: center; align-items: center; flex-direct
     .skill-row .hexagon-wrap .right {right: -5px; bottom: 35px; transform: rotateZ(90deg); }
     .skill-row .hexagon-wrap .right-top { right: 12.5px; top: 0px; transform: rotateZ(30deg);}
 }
-
-.project-container {height : 100vh}

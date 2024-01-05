@@ -76,8 +76,6 @@ function scrollActive() {
         const sectionHeight = current.offsetHeight,
             sectionTop = current.offsetTop - 50,
             sectionId= current.getAttribute("id");
-            console.log(sectionId)
-            console.log(document.querySelectorAll(".nav-menu a[href*=" + sectionId + "]"))
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
                 document.querySelectorAll(".nav-menu a[href*=" + sectionId + "]")[0].classList.add("active-link");
         } else {
@@ -169,5 +167,120 @@ document.addEventListener('DOMContentLoaded', () => {
         chip.addEventListener('mouseenter', handleMouseEnter);
         chip.addEventListener('mouseleave', handleMouseLeave);
         chip.addEventListener('click', handleClick);
+    });
+});
+
+// Skill hover effect
+document.addEventListener("DOMContentLoaded", function () {
+    const hexagons = document.querySelectorAll(".hexagon-wrap");
+    const skillInfo = document.getElementById("skill-info");
+    let currentHexagon = null; // 현재 열린 헥사곤 정보를 저장하는 변수
+    let isAnimating = false; // 애니메이션이 진행 중인지 여부를 확인하는 변수
+
+    hexagons.forEach(hexagon => {
+        hexagon.addEventListener("click", function (e) {
+            e.stopPropagation(); // 상위로의 이벤트 전파 차단
+
+            // .col60.skill 엘리먼트의 위치
+            const col60SkillRect = document.querySelector(".col60.skill").getBoundingClientRect();
+
+            const clickedHexagon = this;
+            // 현재 클릭한 헥사곤과 이전에 열린 헥사곤이 다르면 이전 헥사곤 닫기
+            if (currentHexagon !== clickedHexagon && currentHexagon) {
+                currentHexagon.classList.remove("active");
+                skillInfo.classList.remove("active");
+
+                // 서서히 작아지는 효과 추가
+                skillInfo.style.transform = "scale(0)";
+                skillInfo.addEventListener("transitionend", function onTransitionEnd() {
+                    skillInfo.removeEventListener("transitionend", onTransitionEnd);
+                    skillInfo.style.display = "none";
+                    isAnimating = false;
+                });
+            }
+
+            // 클릭한 헥사곤에 .active 클래스 추가하여 확대 효과
+            clickedHexagon.classList.add("active");
+            skillInfo.classList.add("active");
+
+            // 서서히 커지는 효과 추가
+            if (!isAnimating) {
+                isAnimating = true;
+                skillInfo.style.display = "block";
+                skillInfo.style.transform = "scale(0)";
+                setTimeout(() => {
+                    skillInfo.style.transform = "scale(1)";
+                }, 0);
+            }
+
+            // 현재 클릭한 헥사곤 정보 저장
+            currentHexagon = clickedHexagon;
+
+            // hexagon-wrap 엘리먼트의 위치
+            const hexagonRect = hexagon.getBoundingClientRect();
+
+            // hexagon-wrap의 중심 좌표
+            const hexagonCenterX = hexagonRect.left + hexagonRect.width / 2;
+            const hexagonCenterY = hexagonRect.top + hexagonRect.height / 2 + 50; 
+
+
+            // skillInfo의 위치를 조정 (부모 엘리먼트 위치 고려)
+            skillInfo.style.left = `${hexagonCenterX - 250 / 2 - col60SkillRect.left}px`;
+            skillInfo.style.top = `${hexagonCenterY - 50 / 2 - col60SkillRect.top}px`;
+
+            // 스킬 정보 텍스트 동적으로 설정
+            const skillName = this.querySelector("h4").textContent;
+            const skillData = getSkillData(skillName);
+
+            skillInfo.querySelector("h4").textContent = skillData.name;
+            skillInfo.querySelector("p").textContent = skillData.description;
+
+            // 클릭한 헥사곤에 .active 클래스 추가하여 확대 효과
+            clickedHexagon.classList.add("active");
+            skillInfo.classList.add("active");
+
+            skillInfo.style.transform = "scale(1)";
+
+            // 보여줄 때 visible 클래스 추가
+            skillInfo.style.display = "block";
+        });
+    });
+
+    function getSkillData(skillName) {
+        // 각 스킬에 대한 정보를 반환하는 함수 (예시)
+        switch (skillName) {
+            case "CSS":
+                return {
+                    name: "CSS",
+                    description: "Cascading Style Sheets로 웹 페이지의 스타일을 정의하는 데 사용됩니다."
+                };
+            case "HTML":
+                return {
+                    name: "HTML",
+                    description: "Hypertext Markup Language로 웹 페이지의 구조를 정의하는 데 사용됩니다."
+                };
+            // 다른 스킬에 대한 정보 추가
+            default:
+                return {
+                    name: "Unknown Skill",
+                    description: "해당 스킬에 대한 정보가 없습니다."
+                };
+        }
+    }
+
+    // 문서 전체를 클릭했을 때 열린 헥사곤이 있으면 닫음
+    document.addEventListener("click", function (e) {
+        if (currentHexagon) {
+            // 서서히 작아지는 효과 추가
+            skillInfo.style.transform = "scale(0)";
+            skillInfo.addEventListener("transitionend", function onTransitionEnd() {
+                skillInfo.removeEventListener("transitionend", onTransitionEnd);
+                skillInfo.style.display = "none";
+                skillInfo.classList.remove("active");
+                currentHexagon.classList.remove("active");
+                currentHexagon = null; // 열린 헥사곤 정보 초기화
+                isAnimating = false;
+            });
+        }
     });
 });
