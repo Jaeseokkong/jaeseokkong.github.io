@@ -110,53 +110,59 @@ socialIcons.addEventListener('click', function (e) {
 
 
 // chip 이벤트
-const card = document.getElementById('card');
-const cardBg = document.querySelector('.card-bg');
-let width = 0;
-let height = 0;
-let mouseX = 0;
-let mouseY = 0;
-let mouseLeaveDelay = null;
-
-function handleMouseMove(e) {
-    const rect = card.getBoundingClientRect();
-    mouseX = e.clientX - rect.left - width / 2;
-    mouseY = e.clientY - rect.top - height / 2;
-
-
-    const rX = (mouseX / width) * 10;
-    const rY = (mouseY / height) * -40;
-    const tX = (mouseX / width) * -40;
-    const tY = (mouseY / height) * -40;
-
-    requestAnimationFrame(() => {
-        const rX = (mouseX / width) * 10;
-        const rY = (mouseY / height) * -15;
-        const tX = (mouseX / width) * -40;
-        const tY = (mouseY / height) * -40;
-
-        card.style.transform = `rotateY(${rX}deg) rotateX(${rY}deg)`;
-    });
-}
-
-function handleMouseEnter() {
-    clearTimeout(mouseLeaveDelay);
-}
-
-function handleMouseLeave() {
-    mouseLeaveDelay = setTimeout(() => {
-        mouseX = 0;
-        mouseY = 0;
-        card.style.transform = 'rotateY(0deg) rotateX(0deg)';
-        //cardBg.style.transform = 'translateX(0px) translateY(0px)';
-    }, 1000);
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-    width = card.offsetWidth;
-    height = card.offsetHeight;
+    const chips = document.querySelectorAll('.chip');
 
-    card.addEventListener('mousemove', handleMouseMove);
-    card.addEventListener('mouseenter', handleMouseEnter);
-    card.addEventListener('mouseleave', handleMouseLeave);
+    chips.forEach(chip => {
+        const chipBg = chip.querySelector('.chip-bg');
+        const project = chip.querySelector('.project-img');
+
+        let width = 0;
+        let height = 0;
+        let mouseX = 0;
+        let mouseY = 0;
+        let mouseLeaveDelay = null;
+
+        function handleMouseMove(e) {
+            const rect = chip.getBoundingClientRect();
+            if (width === 0 || height === 0) {
+                width = chip.offsetWidth;
+                height = chip.offsetHeight;
+            }
+            mouseX = e.clientX - rect.left - width / 2;
+            mouseY = e.clientY - rect.top - height / 2;
+
+            requestAnimationFrame(() => {
+                const rX = (mouseX / width) * 20;
+                const rY = (mouseY / height) * -20;
+                const tX = (mouseX / width) * -40;
+                const tY = (mouseY / height) * -40;
+                chip.style.transition = 'transform 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95)';
+                chip.style.transform = `rotateY(${rX}deg) rotateX(${rY}deg) translateZ(20px)`;
+
+                project.style.transition = 'transform 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95)';
+                project.style.transform = `rotateY(${-rX * 1.5}deg) rotateX(${-rY * 1.5}deg) translateZ(20px)`;
+            });
+        }
+
+        function handleMouseEnter() {
+            clearTimeout(mouseLeaveDelay);
+        }
+
+        function handleMouseLeave() {
+            mouseLeaveDelay = setTimeout(() => {
+                mouseX = 0;
+                mouseY = 0;
+                chip.style.transition = 'transform 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95)';
+                chip.style.transform = 'rotateY(0deg) rotateX(0deg)';
+
+                project.style.transition = 'transform 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95)';
+                project.style.transform = 'rotateY(0deg) rotateX(0deg)';
+            }, 1000);
+        }
+
+        chip.addEventListener('mousemove', handleMouseMove);
+        chip.addEventListener('mouseenter', handleMouseEnter);
+        chip.addEventListener('mouseleave', handleMouseLeave);
+    });
 });

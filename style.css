@@ -236,13 +236,30 @@ i {font-size: 16px;}
 
 /* Projects box */
 .project-container {display: flex; width: 100%; justify-content: space-between; gap: 20px; flex-wrap: wrap;}
-.project-container .chip-wrap {transform: perspective(800px); transform-style: preserve-3d; cursor: pointer; height: fit-content; margin : auto 0;}
-.project-container .chip-wrap .card {width:240px; height: 320px; background-color: #333; transition: transform 0.1s ease-in-out;}
-.project-container .chip-wrap .card:hover {transition: 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95);}
+.project-container .chip-wrap {transform: perspective(800px); transform-style: preserve-3d; cursor: pointer; height: fit-content; margin: 10px; box-shadow: inset 1px 1px 3px #1C39BB; padding : 5px;}
+.project-container .chip-wrap::before {content: ''; position: absolute; top: -10%; left: 25%; width: 50%; aspect-ratio: 1; border-radius: 50%; background-color: transparent; box-shadow: inset 1px 1px 3px #1C39BB;}
+.project-container .chip-wrap .chip {width:240px; height: 340px; background-color: #3B3B3B; transition: 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95); border-radius: 20px; box-shadow: rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.5) 0 0; padding : 20px 15px 30px 15px; position: relative; overflow: hidden;}
+.project-container .chip-wrap .chip:hover {border: 1px solid #fff;}
+.project-container .chip-wrap .chip::after {content: ''; display: block; width: 240px; height: 340px; z-index: 2; background-color: transparent; position: absolute; top: 0; left: 0; border-radius: 20px; border: 15px solid #3B3B3B; border-bottom: 50px solid #3B3B3B; box-sizing: border-box; z-index: -1;}
+.chip .project-img {width: 100%; transform-origin: center center; position: absolute; left: 0%; top: 20%; z-index: -2;}
+.chip #tetris {width: 120%; left: -5%;}
 
+.chip .chip-bg {opacity: 0.5; position: absolute; top: -20px; left: -20px; width: 100%; height: 100%; padding: 20px; background-repeat: no-repeat; background-position: center; background-size: cover;   transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95); pointer-events: none;}
+.chip .chip-info {width: 210px; height: 100%; position: relative; border: 4px solid #000; border-radius: 12.5px;}
+.chip .chip-info::before {content: ''; width: 33%; height: 7.5px; top: -7.5px; background-color: #000; position: absolute; left: 33%;}
+.chip .chip-info::after {content: ''; width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 12.5px solid #000; position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); z-index: 2;}
+.chip .chip-info .header {width: 100%; height: 20%; background-color: #D60C12; display: flex; justify-content: center; border-radius: 7.5px 7.5px 0 0;}
+.chip .chip-info .header img {height: 60%; margin: auto 0;}
+.chip .chip-info .header .text {display: flex; flex-direction: column; color : #eee; margin: auto 0 auto 10px;}
+.chip .chip-info .header .text span:nth-child(1) {font-size: 0.7em; line-height: 1.4em; letter-spacing: 6.7px;}
+.chip .chip-info .header .text span:nth-child(2) {font-size: 1.4em; line-height: 1.2em; font-weight: bold;}
+.chip .chip-info .body {position: relative; width: 100%; height: 65%; background-color: transparent; display: flex; overflow: hidden;}
+.chip .chip-info .body .bottom_logo {position: absolute; bottom: 5%; right: 5%; width: 40%; height: 20px; border-radius: 10px; border: 3px solid #eee; display: flex;}
+.chip .chip-info .body .bottom_logo span { font-size: 0.8em; line-height: 0; margin: auto; font-weight: bold; color: #eee;}
+.chip .chip-info .body .bottom_logo span:after{content: 'H'; border: 1px solid #eee; font-size: 3px; border-radius: 50%; color: #eee; padding: 2px 1px 0.5px 1px; position: absolute; aspect-ratio: 1; text-align: center; top: 1px; font-weight: bold;}
+.chip .chip-info .bottom {width: 100%; height: 15%; background-color: #201A24;  display: flex; border-radius: 0 0 7.5px 7.5px;}
+.chip .chip-info .bottom span {color: white; margin: auto; font-size: 1.5em; letter-spacing: 0.3em;}
 .top-header span {color: var(--text-color); }
-
-
 
 
 /* Contact info */
@@ -341,4 +358,3 @@ footer {display: flex; justify-content: center; align-items: center; flex-direct
 }
 
 .project-container {height : 100vh}
-#header {display: none;}
