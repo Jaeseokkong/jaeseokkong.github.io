@@ -15,7 +15,7 @@ toggleSwitch.addEventListener('click', () => {
 
 // Typing Effect
 const typingEffect = new Typed(".typedText", {
-    strings: ["Passionate FrontEnd Developer", "UI/UX Enthusiast", "Code Wizard", "Web Design Lover", "JavaScript Ninja"],
+    strings: ["Passionate FrontEnd", "UI/UX Enthusiast", "Code Wizard", "Web Design Lover", "JavaScript Ninja"],
     loop: true,
     typeSpeed: 80,
     backSpeed: 60,
@@ -174,47 +174,19 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener("DOMContentLoaded", function () {
     const hexagons = document.querySelectorAll(".hexagon-wrap");
     const skillInfo = document.getElementById("skill-info");
-    let currentHexagon = null; // 현재 열린 헥사곤 정보를 저장하는 변수
-    let isAnimating = false; // 애니메이션이 진행 중인지 여부를 확인하는 변수
+    let ing = false;
 
     hexagons.forEach(hexagon => {
+        if(hexagon.classList.contains("empty")) return;
         hexagon.addEventListener("click", function (e) {
             e.stopPropagation(); // 상위로의 이벤트 전파 차단
-
+            if(ing == true) return;
             // .col60.skill 엘리먼트의 위치
             const col60SkillRect = document.querySelector(".col60.skill").getBoundingClientRect();
 
             const clickedHexagon = this;
-            // 현재 클릭한 헥사곤과 이전에 열린 헥사곤이 다르면 이전 헥사곤 닫기
-            if (currentHexagon !== clickedHexagon && currentHexagon) {
-                currentHexagon.classList.remove("active");
-                skillInfo.classList.remove("active");
 
-                // 서서히 작아지는 효과 추가
-                skillInfo.style.transform = "scale(0)";
-                skillInfo.addEventListener("transitionend", function onTransitionEnd() {
-                    skillInfo.removeEventListener("transitionend", onTransitionEnd);
-                    skillInfo.style.display = "none";
-                    isAnimating = false;
-                });
-            }
-
-            // 클릭한 헥사곤에 .active 클래스 추가하여 확대 효과
-            clickedHexagon.classList.add("active");
-            skillInfo.classList.add("active");
-
-            // 서서히 커지는 효과 추가
-            if (!isAnimating) {
-                isAnimating = true;
-                skillInfo.style.display = "block";
-                skillInfo.style.transform = "scale(0)";
-                setTimeout(() => {
-                    skillInfo.style.transform = "scale(1)";
-                }, 0);
-            }
-
-            // 현재 클릭한 헥사곤 정보 저장
-            currentHexagon = clickedHexagon;
+            const currentHexagon = document.querySelector(".hexagon-wrap.active")
 
             // hexagon-wrap 엘리먼트의 위치
             const hexagonRect = hexagon.getBoundingClientRect();
@@ -223,31 +195,46 @@ document.addEventListener("DOMContentLoaded", function () {
             const hexagonCenterX = hexagonRect.left + hexagonRect.width / 2;
             const hexagonCenterY = hexagonRect.top + hexagonRect.height / 2 + 50; 
 
+            if (currentHexagon !== clickedHexagon && currentHexagon) {
+                currentHexagon.classList.remove("active");
+                skillInfo.classList.remove("active");
+                   
+                ing = true;
+                setTimeout(() => {
+                    console.log('여기')
+                    skillInfo.style.left = `${hexagonCenterX - 250 / 2 - col60SkillRect.left}px`;
+                    skillInfo.style.top = `${hexagonCenterY - 50 / 2 - col60SkillRect.top}px`;
+                        // 스킬 정보 텍스트 동적으로 설정
+                    const skillName = this.querySelector("h4").textContent;
+                    const skillData = getSkillData(skillName);
+                    skillInfo.querySelector("h4").textContent = skillData.name;
+                    skillInfo.querySelector("p").textContent = skillData.description;
+                    clickedHexagon.classList.add("active");
+                    skillInfo.classList.add("active"); 
+                    console.log(skillName)
 
-            // skillInfo의 위치를 조정 (부모 엘리먼트 위치 고려)
-            skillInfo.style.left = `${hexagonCenterX - 250 / 2 - col60SkillRect.left}px`;
-            skillInfo.style.top = `${hexagonCenterY - 50 / 2 - col60SkillRect.top}px`;
+                    ing = false
+                }, 400)
+                
+               
+            } else if (currentHexagon === clickedHexagon) {
+                //console.log('동일한 스킬 누름')                
+            } else {
+                skillInfo.style.left = `${hexagonCenterX - 250 / 2 - col60SkillRect.left}px`;
+                skillInfo.style.top = `${hexagonCenterY - 50 / 2 - col60SkillRect.top}px`;
+                const skillName = this.querySelector("h4").textContent;
+                const skillData = getSkillData(skillName);
+                skillInfo.querySelector("h4").textContent = skillData.name;
+                skillInfo.querySelector("p").textContent = skillData.description;
+                clickedHexagon.classList.add("active");
+                skillInfo.classList.add("active"); 
+            }
 
-            // 스킬 정보 텍스트 동적으로 설정
-            const skillName = this.querySelector("h4").textContent;
-            const skillData = getSkillData(skillName);
 
-            skillInfo.querySelector("h4").textContent = skillData.name;
-            skillInfo.querySelector("p").textContent = skillData.description;
-
-            // 클릭한 헥사곤에 .active 클래스 추가하여 확대 효과
-            clickedHexagon.classList.add("active");
-            skillInfo.classList.add("active");
-
-            skillInfo.style.transform = "scale(1)";
-
-            // 보여줄 때 visible 클래스 추가
-            skillInfo.style.display = "block";
         });
     });
 
     function getSkillData(skillName) {
-        // 각 스킬에 대한 정보를 반환하는 함수 (예시)
         switch (skillName) {
             case "CSS":
                 return {
@@ -259,10 +246,99 @@ document.addEventListener("DOMContentLoaded", function () {
                     name: "HTML",
                     description: "Hypertext Markup Language로 웹 페이지의 구조를 정의하는 데 사용됩니다."
                 };
-            // 다른 스킬에 대한 정보 추가
+            case "StyledComponents":
+                return {
+                    name: "Styled Components",
+                    description: "React 애플리케이션에서 사용되는 CSS-in-JS 라이브러리로, JavaScript를 사용하여 스타일을 정의합니다. 컴포넌트 기반 스타일링을 간편하게 구현할 수 있습니다."
+                };
+            case "TypeScript":
+                return {
+                    name: "TypeScript",
+                    description: "Microsoft에 의해 개발된 오픈 소스 프로그래밍 언어로, JavaScript에 정적 타입을 추가하여 코드의 가독성과 유지 보수성을 향상시킵니다."
+                };
+            case "React":
+                return {
+                    name: "React",
+                    description: "Facebook에서 개발한 JavaScript 라이브러리로, 사용자 인터페이스를 구축하기 위한 선언적이고 효율적인 방법을 제공합니다."
+                };
+            case "ReactNative":
+                return {
+                    name: "React Native",
+                    description: "React를 기반으로 하는 모바일 애플리케이션 개발 프레임워크로, 하나의 코드베이스로 iOS 및 Android 앱을 개발할 수 있습니다."
+                };
+            case "jQuery":
+                return {
+                    name: "jQuery",
+                    description: "경량의 크로스 플랫폼 JavaScript 라이브러리로, HTML 문서 탐색, 이벤트 핸들링, 애니메이션 및 Ajax 상호 작용을 단순화합니다."
+                };
+            case "JavaScript":
+                return {
+                    name: "JavaScript",
+                    description: "웹 개발에서 가장 널리 사용되는 프로그래밍 언어 중 하나로, 동적인 웹 페이지 및 웹 애플리케이션을 구축하는 데 사용됩니다."
+                };
+            case "Redux":
+                return {
+                    name: "Redux",
+                    description: "React 애플리케이션의 상태를 관리하기 위한 상태 관리 라이브러리로, 예측 가능한 상태 컨테이너를 제공합니다."
+                };
+            case "Firebase":
+                return {
+                    name: "Firebase",
+                    description: "Google에서 제공하는 모바일 및 웹 애플리케이션 개발 플랫폼으로, 클라우드 기반 데이터베이스, 인증, 호스팅 등을 제공합니다."
+                };
+            case "RestAPI":
+                return {
+                    name: "RestAPI",
+                    description: "Representational State Transfer의 약자로, 네트워크 아키텍처를 위한 아주 간단한 표준을 나타냅니다. HTTP를 통해 데이터를 전송합니다."
+                };
+            case "Nextjs":
+                return {
+                    name: "Next.js",
+                    description: "React 기반의 JavaScript 프레임워크로, 서버 사이드 렌더링 및 정적 사이트 생성을 지원하여 웹 애플리케이션의 성능을 향상시킵니다."
+                };
+            case "Server":
+                return {
+                    name: "Server",
+                    description: "웹 애플리케이션 또는 모바일 애플리케이션에서 클라이언트에게 서비스를 제공하는 컴퓨터 시스템이나 프로그램을 가리킵니다."
+                };
+            case "AWS":
+                return {
+                    name: "AWS",
+                    description: "Amazon Web Services의 약자로, 클라우드 컴퓨팅 서비스를 제공하는 아마존의 플랫폼입니다."
+                };
+            case "Nodejs":
+                return {
+                    name: "Node.js",
+                    description: "Chrome V8 JavaScript 엔진으로 빌드된 JavaScript 런타임 환경으로, 서버 사이드에서 JavaScript 코드를 실행할 수 있게 해줍니다."
+                };
+            case "Spring":
+                return {
+                    name: "Spring",
+                    description: "Java 플랫폼을 위한 오픈 소스 프레임워크로, 기업급 Java 애플리케이션을 개발하기 위한 다양한 모듈을 제공합니다."
+                };
+            case "JAVA":
+                return {
+                    name: "JAVA",
+                    description: "Sun Microsystems에서 개발한 객체 지향 프로그래밍 언어로, 다양한 플랫폼에서 실행될 수 있도록 설계되었습니다."
+                };
+            case "Expressjs":
+                return {
+                    name: "Express.js",
+                    description: "Node.js 웹 애플리케이션을 위한 간결하고 유연한 웹 애플리케이션 프레임워크로, 빠른 개발을 위해 설계되었습니다."
+                };
+            case "MySQL":
+                return {
+                    name: "MySQL",
+                    description: "오픈 소스 관계형 데이터베이스 관리 시스템(RDBMS)으로, 다양한 응용 프로그램을 위해 데이터를 저장 및 관리합니다."
+                };
+            case "Figma":
+                return {
+                    name: "Figma",
+                    description: "웹 기반의 인터페이스 및 그래픽 디자인 도구로, 팀원과 함께 협업하며 디자인을 생성 및 수정할 수 있습니다."
+                };
             default:
                 return {
-                    name: "Unknown Skill",
+                    name: "알 수 없는 스킬",
                     description: "해당 스킬에 대한 정보가 없습니다."
                 };
         }
@@ -270,17 +346,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 문서 전체를 클릭했을 때 열린 헥사곤이 있으면 닫음
     document.addEventListener("click", function (e) {
+        const currentHexagon = document.querySelector(".hexagon-wrap.active")
+
         if (currentHexagon) {
-            // 서서히 작아지는 효과 추가
-            skillInfo.style.transform = "scale(0)";
-            skillInfo.addEventListener("transitionend", function onTransitionEnd() {
-                skillInfo.removeEventListener("transitionend", onTransitionEnd);
-                skillInfo.style.display = "none";
-                skillInfo.classList.remove("active");
-                currentHexagon.classList.remove("active");
-                currentHexagon = null; // 열린 헥사곤 정보 초기화
-                isAnimating = false;
-            });
+            skillInfo.classList.remove("active");
+            currentHexagon.classList.remove("active");
         }
     });
 });

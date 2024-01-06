@@ -104,10 +104,10 @@ body.dark #moon {opacity: 0;}
 
 .featured-charactor {margin: auto 0; max-width: 600px; max-height : 600px; width: 45%; cursor: pointer;}
 
-.featured-name {font-size: 50px; font-weight: 600; margin-block: 20px; color: var(--point-color); margin-bottom: 10px;}
-.typedText {color: var(--point-color); font-size: 55px; text-transform: capitalize;}
+.featured-name {font-size: 45px; font-weight: 600; margin-block: 20px; color: var(--point-color); margin-bottom: 10px;}
+.typedText {color: var(--point-color); font-size: 50px; text-transform: capitalize;}
+.text-info {color: var(--text-color)}
 
-.text-info {font-size: 16px; margin-bottom: 30px; color: var(--text-color);}
 .text-info span {font-weight: bold; color: var(--text-yellow)}
 
 .text-btn {display: flex; border-radius: 8px; cursor: pointer; gap: 20px;}
@@ -180,8 +180,8 @@ i {font-size: 16px;}
 .skill {background: transparent; box-shadow: 1px 8px 10px 2px var(--first-shadow); padding : 10px 0px; border-radius: 20px; border: 2px solid #fff; display: flex; flex-direction: column; margin: 0 auto; position: relative;}  
 .skill h2, .skill h3 {color: var(--text-color)}
 .skill .skill-header {display: block; width: 100%; height: fit-content; text-align: center;}
-.skill .skill-info {position: absolute; background-color: white; padding: 10px; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); max-width: 300px; z-index: 1; transform: scale(0); transition: transform 0.3s ease;}
-.skill .skill-info.active {transform: scale(1)}
+.skill .skill-info {position: absolute; background-color: var(--body-color); padding: 20px; max-width: 300px; z-index: 1; transform: scale(0); transition: transform 0.3s ease; border-radius: 10px; opacity: 0.9; color: var(--text-color); border: 2px solid var(--text-color)}
+.skill .skill-info.active {transform: scale(1); display:block;}
 .skill .skill-container {display: flex; flex-direction: column; width: fit-content; margin: 30px auto;}
 
 .skill-row {width: 100%; overflow:visible; display: flex;}
@@ -189,7 +189,8 @@ i {font-size: 16px;}
 .skill-row:nth-child(odd) {margin-left: 60px}
 .skill-row:nth-child(n+2){margin-top: -15px;}
 
-.skill-row .hexagon-wrap {filter: drop-shadow(0px 0px 2px rgba(150, 150, 150, 0.5));}
+.skill-row .hexagon-wrap {filter: drop-shadow(0px 0px 2px rgba(150, 150, 150, 0.5)); cursor: pointer;}
+.skill-row .hexagon-wrap.active {filter: drop-shadow(0px 0px 5px var(--point-color));}
 .skill-row .hexagon-wrap:nth-child(n+2) {margin-left: 17px;}
 .skill-row .hexagon-wrap .line {width: 1px; height: 17px; position: absolute;}
 
@@ -215,20 +216,6 @@ i {font-size: 16px;}
 .react-native h4 {bottom: 2%!important;}
 .expressjs h4 {bottom: 2% !important;}
 .skill-row .hexagon-wrap.figma {margin-left: 65px}
-
-
-.hexagon-wrap.active {
-    animation: rotateShadow 5s linear infinite;
-}
-
-@keyframes rotateShadow {
-    0% {
-        filter: drop-shadow(2px 3px 2px rgba(150, 150, 150, 0.5));
-    }
-    100% {
-        filter: drop-shadow(2px 3px 2px rgba(138, 43, 226, 0.5));
-    }
-}
 
 @keyframes progress {
     0% {
