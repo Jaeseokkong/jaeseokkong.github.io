@@ -160,8 +160,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function handleClick() {
-            chip.classList.toggle('active')
+            chip.style.transform = `rotateY(0deg) rotateX(0deg) translateZ(40px)`
+            chip.classList.add('active')
+
+            if(chip.classList.contains('active')) {
+                openModal();
+            } else {
+                closeModal();
+            }
         }
+
+      
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('project-modal');
+            if(e.target === modal) {
+                closeModal();
+            }
+        })
 
         chip.addEventListener('mousemove', handleMouseMove);
         chip.addEventListener('mouseenter', handleMouseEnter);
@@ -169,6 +184,18 @@ document.addEventListener('DOMContentLoaded', () => {
         chip.addEventListener('click', handleClick);
     });
 });
+
+function openModal() {
+    const modal = document.getElementById('project-modal');
+    modal.style.display = 'flex';
+}
+
+function closeModal() {
+    const activeChip = document.querySelector(".chip.active")
+    activeChip.classList.remove('active')
+    const modal = document.getElementById('project-modal');
+    modal.style.display = 'none';
+}
 
 // Skill hover effect
 document.addEventListener("DOMContentLoaded", function () {
@@ -201,7 +228,6 @@ document.addEventListener("DOMContentLoaded", function () {
                    
                 ing = true;
                 setTimeout(() => {
-                    console.log('여기')
                     skillInfo.style.left = `${hexagonCenterX - 250 / 2 - col60SkillRect.left}px`;
                     skillInfo.style.top = `${hexagonCenterY - 50 / 2 - col60SkillRect.top}px`;
                         // 스킬 정보 텍스트 동적으로 설정
@@ -211,7 +237,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     skillInfo.querySelector("p").textContent = skillData.description;
                     clickedHexagon.classList.add("active");
                     skillInfo.classList.add("active"); 
-                    console.log(skillName)
 
                     ing = false
                 }, 400)

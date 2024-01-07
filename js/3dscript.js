@@ -17,7 +17,6 @@ updateRendererSize(); // 초기에 설정
 
 function updateRendererSize() {
     const rect = featuredCharactorElement.getBoundingClientRect(); // 외부 요소의 크기를 가져옴
-    console.log(rect)
     const width = rect.width;
     const height = rect.height;
 
