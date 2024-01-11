@@ -379,3 +379,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+function openSite (e) {
+    console.log(e.target.querySelector("input"))
+}
