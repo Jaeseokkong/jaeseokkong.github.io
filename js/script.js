@@ -380,6 +380,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+const projectInfo = {
+    tetris : {
+
+    },
+
+    netfilx : {
+
+    },
+
+    twitter : {
+
+    },
+}
+
 function openSite (e) {
     console.log(e.target.querySelector("input"))
 }
