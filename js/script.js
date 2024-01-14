@@ -392,6 +392,7 @@ const projectInfo = {
     twitter : {
 
     },
+    
 }
 
 function openSite (e) {
