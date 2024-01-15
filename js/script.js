@@ -382,7 +382,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const projectInfo = {
     tetris : {
-
+        introduce : "",
+        source : "",
+        url : "",
     },
 
     netfilx : {
